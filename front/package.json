@@ -2,7 +2,6 @@
   "name": "kakau-web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",

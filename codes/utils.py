@@ -40,7 +40,7 @@ def get_header_index(header, name):
     return header.index(name)
 
 # ex) user_like: [(0, 1920, False), (3, NULL, NULL)]
-def label_based_on_user(tree_in, user_like, user_hate):
+def label_based_on_user(tree_in, user_like, user_hate, forbiden_tags):
     like_index = set(range(tree_in.shape[0]))
     for feat, threa, big in user_like:
         if feat < 2:
@@ -59,6 +59,15 @@ def label_based_on_user(tree_in, user_like, user_hate):
                 hate_index = hate_index.intersection(set(np.where(tree_in[:, feat] <= threa )[0].tolist()))
         else:
             hate_index = hate_index.intersection(set(np.where(tree_in[:, feat].astype(int) == 1)[0].tolist()))
+
+    for feat, threa, big in forbiden_tags:
+        if feat < 2:
+            if big:
+                hate_index = hate_index.union(set(np.where(tree_in[:, feat] > threa )[0].tolist()))
+            else:
+                hate_index = hate_index.union(set(np.where(tree_in[:, feat] <= threa )[0].tolist()))
+        else:
+            hate_index = hate_index.union(set(np.where(tree_in[:, feat].astype(int) == 1)[0].tolist()))
 
     labels = np.ones(tree_in.shape[0]) * -1
     labels[list(like_index)] = 1

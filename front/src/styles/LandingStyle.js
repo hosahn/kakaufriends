@@ -1,8 +1,7 @@
-import styled, { keyframes } from 'styled-components';
-import { Moon } from '@styled-icons/heroicons-solid/Moon';
-import { PencilAlt } from '@styled-icons/fa-solid/PencilAlt';
-import { HeartFill } from '@styled-icons/bootstrap/HeartFill';
-import { MusicNoteList } from '@styled-icons/bootstrap/MusicNoteList';
+import styled, { keyframes } from "styled-components";
+import { Moon } from "@styled-icons/heroicons-solid/Moon";
+import { HeartFill } from "@styled-icons/bootstrap/HeartFill";
+import { MusicNoteList } from "@styled-icons/bootstrap/MusicNoteList";
 
 export const MoonIcon = styled(Moon)`
   color: white;
@@ -61,29 +60,15 @@ export const ButtonDiv = styled.div`
 export const Quotation = styled.h1`
   top: 1050px;
   font-size: 32px;
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   color: black;
   color: white;
   text-align: center;
   white-space: pre-wrap;
 `;
 
-export const PencilIcon = styled(PencilAlt)`
-  color: white;
-  width: 100px;
-  height: 100px;
-  top: 650px;
-  position: relative;
-  left: 400px;
-  margin: auto;
-  transition: all 0.8s ease-in-out;
-  &:hover {
-    color: black;
-  }
-`;
-
 export const PencilText = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 38px;
   text-align: center;
   color: white;
@@ -95,7 +80,7 @@ export const PencilText = styled.h1`
 `;
 
 export const SportText = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 38px;
   text-align: center;
   color: white;
@@ -107,7 +92,7 @@ export const SportText = styled.h1`
 `;
 
 export const EmotionText = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 38px;
   text-align: center;
   color: white;
@@ -154,7 +139,7 @@ export const GraphContainer = styled.div`
   border-radius: 30px;
   position: relative;
   margin: auto;
-  top: 1200px;
+  top: 150px;
   width: 900px;
   height: 900px;
   display: flex;
@@ -163,7 +148,7 @@ export const GraphContainer = styled.div`
 `;
 
 export const WhyWe = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 50px;
   text-align: center;
   color: white;
@@ -172,7 +157,7 @@ export const WhyWe = styled.h1`
 `;
 
 export const HeartText = styled.div`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 30px;
   top: ${(props) => props.Top};
   left: ${(props) => props.Left};
@@ -184,17 +169,17 @@ export const HeartText = styled.div`
 `;
 
 export const SocietyProblem = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 50px;
   text-align: center;
   color: white;
-  top: 1100px;
+  margin-top: 100px;
   word-spacing: 30px;
 `;
 export const MainContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 420vh;
+  height: 240vh;
   overflow: hidden;
   background-image: linear-gradient(to bottom, #09203f 0%, #537895 100%);
 `;
@@ -216,7 +201,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 80px;
   text-align: center;
   color: white;
@@ -224,7 +209,7 @@ export const Title = styled.h1`
   word-spacing: 10px;
 `;
 export const Explanation = styled.h1`
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-size: 64px;
   text-align: center;
   color: white;
@@ -297,7 +282,7 @@ export const REmotionText = styled.h3`
   height: 163px;
   left: 500px;
   top: 15px;
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
@@ -312,7 +297,7 @@ export const RSocialText = styled.h3`
   height: 163px;
   left: 500px;
   top: 270px;
-  font-family: 'EliceDigitalBaeum_Bold';
+  font-family: "EliceDigitalBaeum_Bold";
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
@@ -386,7 +371,7 @@ export const StarFalling = styled.span`
     0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
   animation: ${boxFade} 50s linear infinite;
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

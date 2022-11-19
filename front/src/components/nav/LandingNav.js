@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const NavWrapper = styled.div`
   padding-top: 20px;
@@ -10,7 +10,7 @@ const NavWrapper = styled.div`
 
 const LogoBtn = styled.button`
 font-family: 'EliceDigitalBaeum';
-color: #f8f0fc;
+color: black;
 font-size: 20px;
 margin-right: 40px;
 :hover {
@@ -18,8 +18,8 @@ margin-right: 40px;
 `;
 
 const NavBtn = styled.button`
-  font-family: 'EliceDigitalBaeum';
-  color: white;
+  font-family: "EliceDigitalBaeum";
+  color: black;
   font-size: 20px;
   margin-right: 40px;
   :hover {
@@ -31,9 +31,9 @@ const LandingNav = () => {
   const navigate = useNavigate();
   return (
     <NavWrapper>
-      <LogoBtn onClick={() => navigate('/')}>밤하늘</LogoBtn>
-      <NavBtn onClick={() => navigate('/register')}>회원가입</NavBtn>
-      <NavBtn onClick={() => navigate('/login')}>로그인</NavBtn>
+      <LogoBtn onClick={() => navigate("/")}>Main</LogoBtn>
+      <NavBtn onClick={() => navigate("/register")}>Register</NavBtn>
+      <NavBtn onClick={() => navigate("/login")}>Log in</NavBtn>
     </NavWrapper>
   );
 };

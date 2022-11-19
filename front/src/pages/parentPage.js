@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import { FormGroup, Checkbox, FormControlLabel } from "@mui/material";
 import { useRadioGroup } from "@mui/material/RadioGroup";
+import Nav from "../components/nav/Nav.js";
+import CheckBox from "../components/CheckBox.js";
+
 import * as Api from "../api.js";
+
+
 const Parent = () => {
   const [forbiddenA, setForbiddenA] = useState("");
   const [forbiddenB, setForbiddenB] = useState("");
@@ -23,6 +29,15 @@ const Parent = () => {
   };
   return (
     <>
+    <Nav></Nav>
+    <div>
+      Some Watching Logs (Current Two category info)
+    </div>
+    <FormGroup>
+      <CheckBox forbiden={forbiddenA}/>
+      <CheckBox forbiden={forbiddenB}/>
+      <CheckBox forbiden={forbiddenC}/>
+    </FormGroup>
       <form>
         <input
           type="first option"
@@ -43,7 +58,7 @@ const Parent = () => {
           onChange={handleChangeC}
         />
         <button type="submit" onClick={submitHandler}>
-          비밀번호 변경
+          Send 
         </button>
       </form>
     </>

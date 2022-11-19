@@ -57,3 +57,21 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+// container
+export const HorizontalContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 2.5rem;
+`;
+
+export const CardContainer = styled.div`
+  position: relative;
+  &: hover {
+    color: #1864ab;
+    transform: scale(1.1);
+  }
+`;

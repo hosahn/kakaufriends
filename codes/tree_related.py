@@ -22,7 +22,8 @@ def save_tree_as_png(self_training):
 
 def get_base_cluster(self_training, tree_in, labels, top_N=1):
   recommend = tree_in[np.where(labels == 1)]
-  sample = recommend[np.random.choice(recommend.shape[0], 10)]
+  num = max(15, len(recommend))
+  sample = recommend[np.random.choice(recommend.shape[0], num)]
   return get_explanation_of_selection(sample, self_training, top_N)
 
 def get_new_cluster(self_training, tree_in, labels, top_N=1):
@@ -43,7 +44,7 @@ def get_new_cluster(self_training, tree_in, labels, top_N=1):
 
 
 def get_explanation_of_selection(selection, self_training, top_N=1):
-  min_impu = [(1.1, 0, 0, 0, -1, -1) for i in range(top_N)] # 0 for smaller or equal, 1 for bigger
+  min_impu = [(10, 0, 0, 0, -1, -1) for i in range(top_N)] # 0 for smaller or equal, 1 for bigger
   for n in range(len(self_training.base_estimator_.estimators_)):
     clf = self_training.base_estimator_.estimators_[n]
     feature = np.asarray(clf.tree_.feature)
@@ -67,7 +68,7 @@ def get_explanation_of_selection(selection, self_training, top_N=1):
     if not not_right:
       prev_info.remove(max(prev_info))
       target_id = max(prev_info)
-      impu = impurity[target_id]
+      impu = impurity[target_id] + len(prev_info) * 0.075
       if min_impu[-1][0] > impu:
         prev_info = np.asarray(list(prev_info), np.uint8)
         min_impu[-1] = (impu, feature[prev_info], threshold[prev_info], selection[sample_id, feature[prev_info]] > threshold[prev_info], target_id, n)

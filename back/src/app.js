@@ -9,15 +9,17 @@ import { default as mysqlSession } from "express-mysql-session";
 import mysql from "mysql";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
+import { loginRouter } from "./routers/loginRouter.js";
+import { passportStrategies } from "./passport/finalStrategy.js";
 
 process.setMaxListeners(15);
 export const app = express();
 const mysqlStore = mysqlSession(session);
 var options = {
-  host: process.env.MYSQL_HOST,
+  host: "127.0.0.1",
   port: 3306,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
+  user: "root",
+  password: "password",
   database: "sessionstore",
 };
 var connection = mysql.createConnection(options);
@@ -30,7 +32,7 @@ const limiter = rateLimit({
 app.use(helmet());
 app.use(
   cors({
-    origin: [""], // server의 url이 아닌, 요청하는 client의 url
+    origin: ["http://localhost:5000"],
     credentials: true,
   })
 );
@@ -41,10 +43,17 @@ app.use(compression());
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: "asdf",
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
     expires: new Date(Date.now() + 60 * 30),
   })
 );
+
+passportStrategies();
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/user", userRouter);
+app.use("/login", loginRouter);

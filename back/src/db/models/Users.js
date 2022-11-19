@@ -4,10 +4,20 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 class Users {
-  static async createLocal({ social, pw, email, name }) {
+  static async userInfo(userId) {
+    const user = await prisma.user.findFirst({
+      where: {
+        seq: userId,
+      },
+      select: {
+        email: true,
+      },
+    });
+    return user;
+  }
+  static async createLocal({ social, pw, email }) {
     const isUser = await prisma.user.findFirst({
       where: {
-        name: name,
         email: email,
         social: social,
       },
@@ -21,7 +31,6 @@ class Users {
           social: social,
           email: email,
           pw: hashedPW,
-          name: name,
         },
       });
       return createdUser;

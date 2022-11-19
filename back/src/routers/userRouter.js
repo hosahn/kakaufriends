@@ -3,6 +3,7 @@ import passport from "passport";
 import { Users } from "../db/index.js";
 import "../config/env.js";
 import loginRequired from "../middlewares/loginRequired.js";
+import UserService from "../services/userService.js";
 
 const userRouter = Router();
 userRouter.get("/localcomplete", (req, res) => {
@@ -39,14 +40,29 @@ userRouter.get("/failed", (req, res) => {
 });
 
 userRouter.post("/signup", async (req, res) => {
-  const { email, pw, name } = req.body;
+  const { email, pw } = req.body;
   const social = "local";
-  const result = await Users.createLocal({ email, pw, social, name });
+  const result = await Users.createLocal({ email, pw, social });
   if (result == null) {
     res.send(false);
   } else {
     res.send(true);
   }
+});
+
+userRouter.post("/newmember", async (req, res) => {
+  const nickname = req.body.nickname;
+});
+
+userRouter.get("/info", loginRequired, async (req, res) => {
+  const userId = req.user.seq;
+  const user = await UserService.userInfo(userId);
+  res.status(200).send(user);
+});
+
+userRouter.post("/select", loginRequired, async (req, res) => {
+  const userId = req.user.seq;
+  const userName = req.body.name;
 });
 
 export { userRouter };

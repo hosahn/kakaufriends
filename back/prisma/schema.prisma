@@ -16,6 +16,10 @@ model member {
   forbidden2 String? @db.Text
   forbidden3 String? @db.Text
   pw         String? @db.Text
+  pref1      String? @db.Text
+  pref2      String? @db.Text
+  pref3      String? @db.Text
+  pref4      String? @db.Text
   user       user?   @relation(fields: [family_id], references: [seq], onDelete: NoAction, onUpdate: NoAction, map: "member_ibfk_1")
 
   @@index([family_id], map: "family_id")

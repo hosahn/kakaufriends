@@ -8,20 +8,37 @@ import businessWoman from "./Images/Profile/business_woman.png";
 import genreRacing from "./Images/Genre/car_racing_kart.png";
 import genreAction from "./Images/Genre/mizudeppou_kids.png";
 import genreAnimals from "./Images/Genre/tree_animals_group.png";
-
+import { useParams } from "react-router-dom";
+import * as Api from "../api.js";
+import { useNavigate } from "react-router-dom";
 const SelectB = () => {
+  const navigate = useNavigate();
   const [choose, setChoose] = useState("");
-  const clickAction = (e) => {
+  let params = useParams();
+  const nickname = params.nickname;
+  const clickAction = async (e) => {
     const category = "Action";
     setChoose(category);
+    const result = await Api.post(`/user/family/${nickname}/setup2`, {
+      pref: "Action",
+    });
+    navigate(`/profiles`);
   };
-  const clickRacing = (e) => {
+  const clickRacing = async (e) => {
     const category = "Racing";
     setChoose(category);
+    const result = await Api.post(`/user/family/${nickname}/setup2`, {
+      pref: "Racing",
+    });
+    navigate(`/profiles`);
   };
-  const clickFantasy = (e) => {
-    const category = "Fantasy";
+  const clickAnimal = async (e) => {
+    const category = "Animal";
     setChoose(category);
+    const result = await Api.post(`/user/family/${nickname}/setup2`, {
+      pref: "Animal",
+    });
+    navigate(`/profiles`);
   };
   return (
     <div className="App">
@@ -44,27 +61,25 @@ const SelectB = () => {
       <body className="App-body">
         <div className="App-body-genre">
           <figure className="genre">
-            <a href="#">
-              <img
-                src={genreAction}
-                width={300}
-                height={300}
-                className="action-icon"
-                alt="Action"
-              />
-            </a>
+            <img
+              src={genreAction}
+              width={300}
+              height={300}
+              className="action-icon"
+              alt="Action"
+              onClick={clickAction}
+            />
             <figcaption>Action</figcaption>
           </figure>
           <figure className="genre">
-            <a href="#">
-              <img
-                src={genreRacing}
-                width={300}
-                height={300}
-                className="racing_icon"
-                alt="Racing"
-              />
-            </a>
+            <img
+              src={genreRacing}
+              width={300}
+              height={300}
+              className="racing_icon"
+              alt="Racing"
+              onClick={clickRacing}
+            />
             <figcaption>Racing</figcaption>
           </figure>
           <figure className="genre">
@@ -75,6 +90,7 @@ const SelectB = () => {
                 height={300}
                 className="animals_icon"
                 alt="Animals"
+                onClick={clickAnimal}
               />
             </a>
             <figcaption>Animals</figcaption>

@@ -8,16 +8,31 @@ import businessWoman from "./Images/Profile/business_woman.png";
 import typeSeries from "./Images/Type/tv_girl_tooku.png";
 import typeMovies from "./Images/Type/kandou_movie_eigakan.png";
 import * as Api from "../api.js";
+import { Navigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const SelectA = () => {
+  const navigate = useNavigate();
   const [choose, setChoose] = useState("");
-  const clickTV = (e) => {
+  let params = useParams();
+  const nickname = params.nickname;
+  const clickTV = async (e) => {
     const category = "TV";
     setChoose(category);
+    const result = await Api.post(`/user/family/${nickname}/setup1`, {
+      pref: "TV",
+    });
+    console.log(result);
+    navigate(`/${nickname}/selectB`);
   };
-  const clickMovie = (e) => {
+  const clickMovie = async (e) => {
     const category = "Movie";
     setChoose(category);
-    const result = Api;
+    const result = await Api.post(`/user/family/${nickname}/setup1`, {
+      pref: "Movie",
+    });
+    console.log(result);
+    console.log(nickname);
+    navigate(`/${nickname}/selectB`);
   };
   return (
     <div className="App">
@@ -40,29 +55,27 @@ const SelectA = () => {
       <body className="App-body">
         <div className="App-body-type">
           <figure class="type">
-            <a href="#">
-              <img
-                id="type1"
-                src={typeSeries}
-                width={300}
-                height={300}
-                className="series-icon"
-                alt="Series"
-              />
-            </a>
+            <img
+              id="type1"
+              src={typeSeries}
+              width={300}
+              height={300}
+              className="series-icon"
+              alt="Series"
+              onClick={clickTV}
+            />
             <figcaption>TV Series</figcaption>
           </figure>
           <figure class="type">
-            <a href="#">
-              <img
-                id="type2"
-                src={typeMovies}
-                width={300}
-                height={300}
-                className="movie_icon"
-                alt="Movies"
-              />
-            </a>
+            <img
+              id="type2"
+              src={typeMovies}
+              width={300}
+              height={300}
+              className="movie_icon"
+              alt="Movies"
+              onClick={clickMovie}
+            />
             <figcaption>Movies</figcaption>
           </figure>
         </div>

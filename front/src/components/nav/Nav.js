@@ -11,11 +11,11 @@ const Nav = () => {
 
   const logoutHandler = async () => {
     try {
-      const res = await Api.get("user/logout");
+      const res = await Api.get("/user/logout");
       if (res.data === true) {
         navigate("/profiles");
       } else {
-        alert("로그아웃에 실패하였습니다.");
+        alert("failed to log out");
         navigate("/");
       }
     } catch (error) {
@@ -29,7 +29,7 @@ const Nav = () => {
 
   return (
     <NavWrap>
-      <UserBtn onClick={() => navigate("/usermain")}>
+      <UserBtn onClick={() => navigate("/profiles")}>
         <FontAwesomeIcon icon={faCircleUser} className="user" />
       </UserBtn>
       <Btn onClick={logoutHandler}>

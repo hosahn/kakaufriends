@@ -33,7 +33,6 @@ const Recommend = () => {
               <img src="https://assets.cdn.moviepilot.de/files/13f4e0f8306cbf15cb16914e96514891a378c1bcadbaa7becd0a8701eab3/limit/500/1000/82927-2.jpg"></img>
             </a>
             <h1>{data.title}</h1>
-            <h2>{data.description}</h2>
           </>
         );
       })}

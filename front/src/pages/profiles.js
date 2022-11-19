@@ -13,7 +13,6 @@ const Profiles = () => {
     try {
       const result = await Api.get("/user/family");
       setProfiles(result.data);
-      console.log(result.data);
     } catch (err) {
       console.log(err);
     }

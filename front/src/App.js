@@ -4,8 +4,6 @@ import "./App.css";
 import Main from "./pages/mainPage";
 import SelectA from "./pages/selectPage1";
 import SelectB from "./pages/selectPage2";
-import SelectC from "./pages/selectPage3";
-import SelectD from "./pages/selectPage4";
 import Login from "./pages/loginPage";
 import Profiles from "./pages/profiles";
 import Parent from "./pages/parentPage";
@@ -18,10 +16,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Main />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/selectA" element={<SelectA />} />
-          <Route path="/selectB" element={<SelectB />} />
-          <Route path="/selectC" element={<SelectC />} />
-          <Route path="/selectD" element={<SelectD />} />
+          <Route path="/:nickname/selectA" element={<SelectA />} />
+          <Route path="/:nickname/selectB" element={<SelectB />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/family/parents" element={<Parent />} />
           <Route path="/family/:nickname" element={<Recommend />} />

@@ -3,6 +3,65 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 class Family {
+  static async setPref1({ seq, nickname, pref }) {
+    const result = await prisma.member.updateMany({
+      where: {
+        family_id: seq,
+        nickname: nickname,
+      },
+      data: {
+        pref1: pref,
+      },
+    });
+    return result;
+  }
+  static async findKid({ seq, nickname }) {
+    const result = await prisma.member.findFirst({
+      where: {
+        family_id: seq,
+        nickname: nickname,
+      },
+    });
+    return result;
+  }
+  static async setPref2({ seq, nickname, pref }) {
+    const result = await prisma.member.updateMany({
+      where: {
+        family_id: seq,
+        nickname: nickname,
+      },
+      data: {
+        pref2: pref,
+      },
+    });
+    return result;
+  }
+  static async setPref3({ seq, nickname, pref }) {
+    const result = await prisma.member.updateMany({
+      where: {
+        family_id: seq,
+        nickname: nickname,
+      },
+      data: {
+        pref3: pref,
+      },
+    });
+    return result;
+  }
+
+  static async setPref4({ seq, nickname, pref }) {
+    const result = await prisma.member.updateMany({
+      where: {
+        family_id: seq,
+        nickname: nickname,
+      },
+      data: {
+        pref4: pref,
+      },
+    });
+    return result;
+  }
+
   static async findAllKids({ seq, auth }) {
     const result = await prisma.member.findMany({
       where: {
@@ -16,7 +75,6 @@ class Family {
     const result = await prisma.member.update({});
   }
   static async setForbiddens({ factor1, factor2, factor3, seq }) {
-    console.log(seq);
     const member = await prisma.member.updateMany({
       where: {
         family_id: seq,

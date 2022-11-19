@@ -44,6 +44,9 @@ userRouter.post("/signup", async (req, res) => {
   const { email, pw } = req.body;
   const social = "local";
   const result = await Users.createLocal({ email, pw, social });
+  const seq = result.seq;
+  const createParent = await FamliyService.addParent({ pw, seq });
+  console.log(createParent);
   if (result == null) {
     res.send(false);
   } else {

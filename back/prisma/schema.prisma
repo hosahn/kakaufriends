@@ -8,10 +8,15 @@ datasource db {
 }
 
 model member {
-  family_id Int?
-  id        Int    @id @default(autoincrement())
-  nickname  String @db.VarChar(20)
-  user      user?  @relation(fields: [family_id], references: [seq], onDelete: NoAction, onUpdate: NoAction, map: "member_ibfk_1")
+  family_id  Int?
+  id         Int     @id @default(autoincrement())
+  nickname   String  @db.VarChar(20)
+  auth       Int?
+  forbidden1 String? @db.Text
+  forbidden2 String? @db.Text
+  forbidden3 String? @db.Text
+  pw         String? @db.Text
+  user       user?   @relation(fields: [family_id], references: [seq], onDelete: NoAction, onUpdate: NoAction, map: "member_ibfk_1")
 
   @@index([family_id], map: "family_id")
 }

@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  IconButton,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-} from "@mui/material";
-import * as Api from "../api.js";
+import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 //memberInfo : img, title, author, github, email

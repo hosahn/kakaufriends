@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as style from "../styles/LandingStyle";
 import LandingNav from "../components/nav/LandingNav";
-import MainFooter from "../components/footer";
 import DiaryGraph from "../components/graph/diaryGraph";
 import SocialGraph from "../components/graph/socialGraph";
 import Btn from "../components/Btn";

@@ -7,7 +7,7 @@ import SelectB from "./pages/selectPage2";
 import SelectC from "./pages/selectPage3";
 import SelectD from "./pages/selectPage4";
 import Login from "./pages/loginPage";
-import Profiles from "./pages/chooseWho";
+import Profiles from "./pages/profiles";
 import Parent from "./pages/parentPage";
 import Recommend from "./pages/recommendPage";
 

@@ -12,7 +12,7 @@ userRouter.get("/localcomplete", (req, res) => {
   if (req.isAuthenticated()) {
     res
       .cookie("sessionId", req.sessionID, { maxAge: 900000, httpOnly: true })
-      .redirect("/user/main");
+      .redirect("/user/family");
   } else {
     res.redirect("/user/failed");
   }
@@ -46,7 +46,6 @@ userRouter.post("/signup", async (req, res) => {
   const result = await Users.createLocal({ email, pw, social });
   const seq = result.seq;
   const createParent = await FamliyService.addParent({ pw, seq });
-  console.log(createParent);
   if (result == null) {
     res.send(false);
   } else {

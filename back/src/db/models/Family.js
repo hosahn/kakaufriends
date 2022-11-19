@@ -3,7 +3,20 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 class Family {
+  static async findAllKids({ seq, auth }) {
+    const result = await prisma.member.findMany({
+      where: {
+        family_id: seq,
+        auth: auth,
+      },
+    });
+    return result;
+  }
+  static async setPreference1({ factor1 }) {
+    const result = await prisma.member.update({});
+  }
   static async setForbiddens({ factor1, factor2, factor3, seq }) {
+    console.log(seq);
     const member = await prisma.member.updateMany({
       where: {
         family_id: seq,
@@ -14,6 +27,7 @@ class Family {
         forbidden3: factor3,
       },
     });
+    console.log(member);
     return member;
   }
   static async memberInfo(nickname) {

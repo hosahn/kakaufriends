@@ -10,6 +10,11 @@ export default class FamliyService {
     const newMember = await Family.addMember({ nickname, seq });
     return newMember;
   }
+
+  static async getAllProfiles({ seq, auth }) {
+    const allKids = await Family.findAllKids({ seq, auth });
+    return allKids;
+  }
   static async selectMember({ nickname, seq }) {
     const allInfos = await Family.memberInfo({ nickname, seq });
     return allInfos;

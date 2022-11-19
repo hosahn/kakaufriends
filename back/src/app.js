@@ -11,6 +11,7 @@ import compression from "compression";
 import rateLimit from "express-rate-limit";
 import { loginRouter } from "./routers/loginRouter.js";
 import { passportStrategies } from "./passport/finalStrategy.js";
+import { familyRouter } from "./routers/familyRouter.js";
 
 process.setMaxListeners(15);
 export const app = express();
@@ -57,3 +58,4 @@ app.use(passport.session());
 
 app.use("/user", userRouter);
 app.use("/login", loginRouter);
+app.use("/user/family", familyRouter);

@@ -4,6 +4,7 @@ import { Users } from "../db/index.js";
 import "../config/env.js";
 import loginRequired from "../middlewares/loginRequired.js";
 import UserService from "../services/userService.js";
+import FamliyService from "../services/familyService.js";
 
 const userRouter = Router();
 userRouter.get("/localcomplete", (req, res) => {
@@ -52,17 +53,15 @@ userRouter.post("/signup", async (req, res) => {
 
 userRouter.post("/newmember", async (req, res) => {
   const nickname = req.body.nickname;
+  const seq = req.user.seq;
+  const addedUser = await FamliyService.addNewMember({ nickname, seq });
+  res.send(addedUser);
 });
 
 userRouter.get("/info", loginRequired, async (req, res) => {
   const userId = req.user.seq;
   const user = await UserService.userInfo(userId);
   res.status(200).send(user);
-});
-
-userRouter.post("/select", loginRequired, async (req, res) => {
-  const userId = req.user.seq;
-  const userName = req.body.name;
 });
 
 export { userRouter };

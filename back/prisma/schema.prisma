@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  seq    Int      @id @default(autoincrement())
+  id     String?  @db.VarChar(20)
+  pw     String?  @db.VarChar(20)
+  social String?  @db.VarChar(50)
+  auth   String?  @db.VarChar(50)
+  email  String   @db.VarChar(50)
+  family family[]
+}
+
+model family {
+  family_id Int?
+  id        Int     @id
+  nickname  String? @db.VarChar(20)
+  auth      String? @db.VarChar(50)
+  user      user?   @relation(fields: [family_id], references: [seq], onDelete: NoAction, onUpdate: NoAction, map: "family_ibfk_1")
+
+  @@index([family_id], map: "family_id")
+}

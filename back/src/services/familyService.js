@@ -35,15 +35,10 @@ export default class FamliyService {
   }
 
   static async browseContents({ nickname, seq }) {
-    var contentList = await Contents.getRandomContents();
-    // try {
-    //   contentList = await Family.getContents(nickname);
-    // } catch (e) {
-    //   contentList = await Contents.getRandomContents();
-    // }
-    // if (!contentList) {
-    //   contentList = await Family.getRandomContents();
-    // }
+    var contentList = await Contents.getContents({ nickname, seq });
+    if (!contentList) {
+      contentList = await Family.getRandomContents();
+    }
     return contentList;
   }
 }

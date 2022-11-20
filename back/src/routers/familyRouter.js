@@ -2,7 +2,7 @@ import { Router } from "express";
 import loginRequired from "../middlewares/loginRequired.js";
 import passport from "passport";
 import FamliyService from "../services/familyService.js";
-import { Family } from "../db/index.js";
+import { Contents, Family } from "../db/index.js";
 
 const familyRouter = Router();
 
@@ -17,7 +17,17 @@ familyRouter.get("/:nickname", loginRequired, async (req, res) => {
   const nickname = req.params.nickname;
   const seq = req.user.seq;
   const result = await FamliyService.browseContents({ nickname, seq });
-  res.send(result);
+  const movieInfos = await Contents.getMovieInfos({ infoList: result });
+  console.log(movieInfos);
+  res.send(movieInfos);
+});
+
+familyRouter.post("/:nickname", loginRequired, async (req, res) => {
+  const nickname = req.params.nickname;
+  const seq = req.user.seq;
+  const title = req.body.title;
+  const result = await Contents.findContent({ title });
+  const saved = await Family.addHistory({ nickname, seq, genre: result });
 });
 
 familyRouter.get("/info/:nickname", loginRequired, async (req, res) => {
@@ -31,7 +41,6 @@ familyRouter.post("/parents/forbidden", async (req, res) => {
   const factor1 = req.body.one;
   const factor2 = req.body.two;
   const factor3 = req.body.three;
-  console.log(factor1, factor2, factor3);
   const seq = req.user.seq;
   const result = await FamliyService.setForbidden({
     factor1,
@@ -55,7 +64,6 @@ familyRouter.post("/:nickname/setup2", async (req, res) => {
   const seq = req.user.seq;
   const pref = req.body.pref;
   const result = await Family.setPref2({ seq, pref, nickname });
-  console.log(result);
   res.send(result);
 });
 

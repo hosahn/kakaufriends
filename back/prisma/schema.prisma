@@ -34,3 +34,10 @@ model user {
   email  String   @db.VarChar(50)
   member member[]
 }
+
+model history {
+  id         Int     @id @default(autoincrement())
+  nickname   String? @db.Text
+  family_key Int?
+  genre      String? @db.Text
+}

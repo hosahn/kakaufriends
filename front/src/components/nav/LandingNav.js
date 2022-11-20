@@ -11,6 +11,9 @@ const NavWrapper = styled.div`
 const LogoBtn = styled.button`
 font-family: 'EliceDigitalBaeum';
 color: black;
+border:0;
+outline:0;
+background-color:transparent;
 font-size: 20px;
 margin-right: 40px;
 :hover {
@@ -20,6 +23,9 @@ margin-right: 40px;
 const NavBtn = styled.button`
   font-family: "EliceDigitalBaeum";
   color: black;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
   font-size: 20px;
   margin-right: 40px;
   :hover {

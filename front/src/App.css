@@ -55,7 +55,7 @@ img#type2:focus{
 }
 
 .App-header {
-  background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
+  background-image: linear-gradient(to left, #cfd9df 0%, #e2ebf0 100%);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -63,11 +63,11 @@ img#type2:focus{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   font-family: Arial Rounded MT Bold;
-  color: white;
+  color: black;
 }
 
 .App-body {
-  background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
+  background-image: linear-gradient(to left, #cfd9df 0%, #e2ebf0 100%);
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ img#type2:focus{
   justify-content: start;
   font-size: calc(10px + 2vmin);
   font-family: Arial Rounded MT Bold;
-  color: white;
+  color: black;
   margin: auto;
 }
 

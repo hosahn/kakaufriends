@@ -13,6 +13,11 @@ const snsText = `lorem.`;
 const quotation = `Register and let your Kids find out their most beloved/safe Movies!`;
 const Landing = () => {
   const navigate = useNavigate();
+
+  const clickHandler = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <style.MainContainer>
@@ -29,7 +34,7 @@ const Landing = () => {
         <style.StarFalling></style.StarFalling>
         <style.LogoContainer>
           <style.Title>Kakau Friends</style.Title>
-          <style.MoonIcon />
+          <style.MoonIcon onClick={clickHandler} />
         </style.LogoContainer>
         <style.ButtonDiv>
           <Btn
@@ -39,12 +44,6 @@ const Landing = () => {
             }}
           />
         </style.ButtonDiv>
-        <style.SocietyProblem>Why our Service?</style.SocietyProblem>
-        <style.GraphContainer>
-          <DiaryGraph />
-          <style.REmotionText>{socialText}</style.REmotionText>
-          <SocialGraph /> <style.RSocialText>{snsText}</style.RSocialText>
-        </style.GraphContainer>
         <style.Quotation>{quotation}</style.Quotation>
       </style.MainContainer>
     </>

@@ -6,11 +6,11 @@ const TimeGraph = (props) => {
   const donutData = {
     series: [
       {
-        name: "작성 일기 수 ",
-        data: [data.morning, data.afternoon, data.night, data.dawn], //data.morning, data.afternoon, data.night, data.dawn
+        name: "",
+        data: [12, 9, 7, 3], //data.morning, data.afternoon, data.night, data.dawn
       },
     ],
-    labels: ["아침", "점심", "저녁", "새벽"],
+    labels: ["Fantasy", "Crime", "SF", "Sport"],
     options: {
       chart: {
         type: "bar",
@@ -26,11 +26,11 @@ const TimeGraph = (props) => {
         enabled: false,
       },
       xaxis: {
-        categories: ["아침", "점심", "저녁", "새벽"],
+        categories: ["Fantasy", "Crime", "SF", "Sport"],
       },
       title: {
         text: "",
-        align: "left",
+        align: "center",
       },
       fill: {
         colors: ["#827397"],

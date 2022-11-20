@@ -10,23 +10,13 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const logoutHandler = async () => {
-    try {
-      const res = await Api.get("/user/logout");
-      if (res.data === true) {
-        navigate("/profiles");
-      } else {
-        alert("failed to log out");
-        navigate("/");
-      }
-    } catch (error) {
-      if (error.response) {
-        const { data } = error.response;
-        console.error("data : ", data);
-        navigate("/");
-      }
-    }
+    window.alert("Successfully Logged Out");
+    navigate("/login");
   };
 
+  const parentHandler = () => {
+    navigate("/family/parents");
+  };
   return (
     <NavWrap>
       <UserBtn onClick={() => navigate("/profiles")}>
@@ -34,6 +24,9 @@ const Nav = () => {
       </UserBtn>
       <Btn onClick={logoutHandler}>
         <HighLight>Log Out</HighLight>
+      </Btn>
+      <Btn onClick={parentHandler}>
+        <HighLight>Parent</HighLight>
       </Btn>
     </NavWrap>
   );

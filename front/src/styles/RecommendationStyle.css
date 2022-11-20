@@ -1,0 +1,83 @@
+h1{
+  margin:0;
+  padding:10px;
+}
+
+h5{
+  margin:0;
+  padding: 0px;
+}
+
+.profile {
+  position: absolute;
+  right: 0%;
+  margin-top: 50px;
+}
+
+.child {
+  position: absolute;
+  right: 7%;
+  margin-top: 50px;
+}
+
+.Rec-header {
+  background-image: linear-gradient(to left, #cfd9df 0%, #e2ebf0 100%);
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family: Arial Rounded MT Bold;
+  color: black;
+}
+
+.Rec-body {
+  background-image: linear-gradient(to left, #cfd9df 0%, #e2ebf0 100%);
+  min-height: 90vh;
+  display: inline-block;
+  width:1519px;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  font-size: calc(10px + 2vmin);
+  font-family: Arial Rounded MT Bold;
+  color: black;
+  text-align: center;
+}
+
+.Rec-body2 {
+  background-image: linear-gradient(to left, #cfd9df 0%, #e2ebf0 100%);
+  min-height: 90vh;
+  display: inline-block;
+  width:1000px;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family: Arial Rounded MT Bold;
+  color: black;
+  text-align: center;
+  opacity: 1;
+  padding-top: 30px;
+}
+
+
+#rcorners1 {
+  border-radius: 25px;
+  background: #FFFFFF;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+
+.recommendation {
+  align-items: center;
+  justify-content: center;
+  display: inline-grid;
+  width: 30.33%;
+  margin-top: 100px;
+  margin-left: 150px;
+  margin:auto;
+}

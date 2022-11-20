@@ -15,6 +15,16 @@ class Family {
     });
     return result;
   }
+
+  static async addHistory({ nickname, seq, genre }) {
+    const result = await prisma.history.create({
+      data: {
+        nickname: nickname,
+        family_id: seq,
+        genre: genre,
+      },
+    });
+  }
   static async findKid({ seq, nickname }) {
     const result = await prisma.member.findFirst({
       where: {
@@ -85,7 +95,6 @@ class Family {
         forbidden3: factor3,
       },
     });
-    console.log(member);
     return member;
   }
   static async memberInfo(nickname) {
